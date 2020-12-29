@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BenFatto.Models.Table>
+@{
+    ViewData["Title"] = "Alterar";
+}
+<h1>@ViewData["Title"]</h1>
+
+@foreach (var item in Model) {
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="Id">Id:</label>
+                <input type="text" class="form-control" id="Id" name="Id" readonly value="@Html.DisplayFor(modelItem => item.ID)">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="IP">IP:</label>
+                <input type="text" class="form-control" id="IP" name="IP" value="@Html.DisplayFor(modelItem => item.Ip)">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="User">User:</label>
+                <input type="text" class="form-control" id="User" name="User" value="@Html.DisplayFor(modelItem => item.User)">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="D">Date Time:</label>
+                <input type="text" class="form-control" id="D" name="D" value="@Html.DisplayFor(modelItem => item.Datetime)">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="Comment">Detail:</label>
+                <input type="text" class="form-control" id="Detail" name="Detail" value="@Html.DisplayFor(modelItem => item.Detail)">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <br>
+        <div class="col-lg-12">
+            <div class="pull-right">
+                <input type="button" class="btn btn-sm btn-warning" value="Voltar" onclick="window.location.href='/Home/Index'" />
+                <input type="button" class="btn btn-sm btn-success" value="Salvar" onclick="Salvar()" />
+                <input type="button" class="btn btn-sm btn-danger" id="Delete" value="Excluir" onclick="Delete()" />
+            </div>
+        </div>
+    </div>
+}
+<script>
+    if ($('#Id').val() == '-1')
+        $('#Delete').hide();
+</script>

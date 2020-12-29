@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BenFatto.Models.Table>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+    <div class="row">
+        <input type="file" name="file" id="FileUpload" accept=".log" />
+        <input type="button" class="btn btn-sm btn-success pull-right" value="Adicionar arquivo de logs" onclick="Upload()" id="UploadBtn">
+    </div>
+    <div class="input-group md-form form-sm form-1 pl-0" style="margin-top:20px">
+        <select id="FilterType">
+            <option>Ip</option>
+            <option>user-agent</option>
+            <option>Hora</option>
+        </select>
+        <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" id="FilterValue">
+        <select id="FilterValueHora" class="form-control my-0 py-1" style="display: none">
+            <option value="00">00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+        </select>
+        <input type="button" class="input-group-text cyan lighten-2" id="basic-text1" value="Pesquisa" onclick="Filter()" />
+    </div>
+    <div class="row" style="margin-top: 20px">
+        <input type="button" class="btn btn-sm btn-success pull-right" value="Adicionar novo log" onclick="window.location.href='/Home/Change'">
+    </div>
+    <table class="table" style="margin-top:20px">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ID)</th>
+            <th>@Html.DisplayNameFor(model => model.Ip)</th>
+            <th>@Html.DisplayNameFor(model => model.User)</th>
+            <th>@Html.DisplayNameFor(model => model.Datetime)</th>
+            <th>@Html.DisplayNameFor(model => model.Detail)</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model) {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ip)</td>
+                <td>@Html.DisplayFor(modelItem => item.User)</td>
+                <td>@Html.DisplayFor(modelItem => item.Datetime)</td>
+                <td>@Html.DisplayFor(modelItem => item.Detail)</td>
+                <td>
+                    <input type="button" class="btn btn-sm btn-outline-warning" value="Alterar" onclick="window.location.href='/Home/Change?Id=@Html.DisplayFor(modelItem => item.ID)'">
+                </td>
+            </tr>
+        }
+    </table>
+</div>
